@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thuật Toán Phân Cụm Chameleon</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="layout">
+        <!-- Sidebar trái -->
+        <aside class="sidebar left-sidebar">
+            <h2>Lý Thuyết Cơ Bản</h2>
+            <div class="theory-section">
+                <h3>Giới Thiệu</h3>
+                <p>Thuật toán Chameleon là một thuật toán phân cụm phân cấp dựa trên đồ thị, phù hợp với việc phân tích dữ liệu khách hàng.</p>
+            </div>
+            <div class="theory-section">
+                <h3>Các Bước Thực Hiện</h3>
+                <ol>
+                    <li>Xây dựng đồ thị k-láng giềng gần nhất</li>
+                    <li>Phân chia ban đầu thành các cụm nhỏ</li>
+                    <li>Gộp cụm dựa trên độ tương đồng</li>
+                    <li>Đánh giá kết quả phân cụm</li>
+                </ol>
+            </div>
+            <div class="theory-section">
+                <h3>Công Thức Quan Trọng</h3>
+                <div class="formula">
+                    <p>Độ tương đồng giữa hai cụm:</p>
+                    <pre>RC(Ci,Cj) = RI(Ci,Cj) × RC(Ci,Cj)²</pre>
+                    <p>Trong đó:</p>
+                    <ul>
+                        <li>RI: Độ kết nối tương đối</li>
+                        <li>RC: Độ gần tương đối</li>
+                    </ul>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Nội dung chính -->
+        <main class="main-content">
+            <header>
+                <h1>Thuật Toán Phân Cụm Chameleon</h1>
+                <p>Phân Tích & Trực Quan Hóa Dữ Liệu Khách Hàng</p>
+            </header>
+
+            <section class="data-input">
+                <h2>Nhập Dữ Liệu</h2>
+                <div class="file-upload">
+                    <input type="file" id="csvFile" accept=".csv">
+                    <label for="csvFile">Tải Lên File CSV</label>
+                </div>
+                <div class="parameters">
+                    <div class="param-group">
+                        <label for="kNearest">Số Láng Giềng (k):</label>
+                        <input type="number" id="kNearest" value="10" min="1">
+                    </div>
+                    <div class="param-group">
+                        <label for="minClusterSize">Kích Thước Cụm Tối Thiểu:</label>
+                        <input type="number" id="minClusterSize" value="5" min="1">
+                    </div>
+                    <button id="startClustering">Bắt Đầu Phân Cụm</button>
+                </div>
+            </section>
+
+            <section class="visualization">
+                <h2>Kết Quả Phân Cụm</h2>
+                <div id="clusterVisualization"></div>
+                <div class="stats">
+                    <div id="clusterStats"></div>
+                    <div id="customerGroups"></div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Sidebar phải -->
+        <aside class="sidebar right-sidebar">
+            <h2>Ví Dụ & Ứng Dụng</h2>
+            <div class="example-section">
+                <h3>Ví Dụ Tiêu Biểu</h3>
+                <div class="example">
+                    <h4>Phân Khúc Khách Hàng</h4>
+                    <p>Phân tích hành vi mua sắm để chia khách hàng thành các nhóm:</p>
+                    <ul>
+                        <li>Khách hàng thân thiết</li>
+                        <li>Khách hàng tiềm năng</li>
+                        <li>Khách hàng không thường xuyên</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="example-section">
+                <h3>Ứng Dụng Thực Tế</h3>
+                <ul>
+                    <li>Chiến lược marketing cá nhân hóa</li>
+                    <li>Tối ưu hóa chuỗi cung ứng</li>
+                    <li>Dự đoán xu hướng tiêu dùng</li>
+                    <li>Phát triển sản phẩm mới</li>
+                </ul>
+            </div>
+            <div class="example-section">
+                <h3>Hướng Dẫn Sử Dụng</h3>
+                <ol>
+                    <li>Chuẩn bị file CSV chứa dữ liệu khách hàng</li>
+                    <li>Tải lên file dữ liệu</li>
+                    <li>Điều chỉnh tham số k và kích thước cụm</li>
+                    <li>Nhấn "Bắt Đầu Phân Cụm"</li>
+                    <li>Phân tích kết quả trực quan</li>
+                </ol>
+            </div>
+        </aside>
+    </div>
+
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html> 
