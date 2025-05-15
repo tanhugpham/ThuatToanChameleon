@@ -1,0 +1,63 @@
+HƯỚNG DẪN THỰC HIỆN THUẬT TOÁN CHAMELEON BẰNG TAY
+(Với k = 3 láng giềng gần nhất)
+
+Bước 1: Chuẩn bị dữ liệu
+- Sử dụng tập dữ liệu mẫu từ file 'mau_don_gian.csv'
+- Gồm 10 điểm dữ liệu 2 chiều (x, y)
+
+Bước 2: Tính khoảng cách Euclidean giữa các điểm
+- Công thức: d = √[(x₁-x₂)² + (y₁-y₂)²]
+- Lập bảng khoảng cách giữa tất cả các điểm
+- Ví dụ: d(P1,P2) = √[(2-5)² + (3-4)²] = √(9 + 1) = √10 ≈ 3.16
+
+Bước 3: Xác định 3 láng giềng gần nhất cho mỗi điểm
+- Với mỗi điểm, chọn 3 điểm có khoảng cách nhỏ nhất
+- Ghi chú các kết nối này vào đồ thị k-NN
+Ví dụ cho P1:
+- Láng giềng 1: P3 (d = 2.24)
+- Láng giềng 2: P2 (d = 3.16)
+- Láng giềng 3: P4 (d = 3.61)
+
+Bước 4: Tính độ tương đồng giữa các cụm
+a) Độ kết nối tương đối (RI):
+   RI = (Số cạnh nối giữa 2 cụm) / (Trung bình số cạnh trong mỗi cụm)
+
+b) Độ gần tương đối (RC):
+   RC = (Khoảng cách trung bình trong cụm) / (Khoảng cách trung bình giữa 2 cụm)
+
+c) Độ tương đồng tổng thể:
+   Similarity = RI × RC²
+
+Bước 5: Gộp cụm
+- Ban đầu mỗi điểm là một cụm
+- Lặp lại việc gộp 2 cụm có độ tương đồng cao nhất
+- Dừng khi không còn cụm nào đủ tương đồng để gộp
+
+Ví dụ thực hiện chi tiết với tập dữ liệu mẫu:
+1. Điểm P1(2,3) và P3(3,5):
+   - Khoảng cách = 2.24
+   - Có kết nối trực tiếp (láng giềng)
+   - RI = 1
+   - RC = 0.8
+   - Similarity = 1 × 0.8² = 0.64
+   → Gộp thành cụm C1
+
+2. Điểm P2(5,4) và P4(6,3):
+   - Khoảng cách = 1.41
+   - Có kết nối trực tiếp
+   - RI = 1
+   - RC = 0.9
+   - Similarity = 1 × 0.9² = 0.81
+   → Gộp thành cụm C2
+
+3. So sánh C1 và C2:
+   - RI = 0.5 (ít kết nối giữa 2 cụm)
+   - RC = 0.4 (khoảng cách lớn)
+   - Similarity = 0.5 × 0.4² = 0.08
+   → Không gộp (độ tương đồng thấp)
+
+Kết quả cuối cùng:
+- Cụm 1: {P1, P3, P5}
+- Cụm 2: {P2, P4, P6}
+- Cụm 3: {P7, P8}
+- Cụm 4: {P9, P10} 
